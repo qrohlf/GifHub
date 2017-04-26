@@ -3,7 +3,7 @@
   "name": "GifHub",
   "short_name": "GifHub",
   "description": "Adds support for gifv/webm/mp4 to discussions on github.com",
-  "version": "1.0.4",
+  "version": "1.0.5",
 
   "browser_action": {
     "default_title": "Adds support for gifv/webm/mp4 to discussions on github.com",
@@ -22,7 +22,7 @@
   ],
 
   "background": {
-    "scripts": ["supported_hosts.js", "background.js"],
+    "scripts": ["vendor/lodash.js", "supported_hosts.js", "background.js"],
     "persistent": true
   },
 

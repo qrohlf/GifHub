@@ -10,5 +10,11 @@ window.SUPPORTED_HOSTS = [
     type: 'video/webm',
     domain: 'https://zippy.gfycat.com',
     template: id => `https://zippy.gfycat.com/${id}.webm`
+  },
+  {
+    pattern: /^https?:\/\/gfycat.com\/gifs\/detail\/(\w+)$/i,
+    type: 'video/webm',
+    domain: 'https://zippy.gfycat.com',
+    template: id => `https://zippy.gfycat.com/${id}.webm`
   }
 ]

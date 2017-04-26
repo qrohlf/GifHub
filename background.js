@@ -1,5 +1,5 @@
-/* global chrome, SUPPORTED_HOSTS */
-const CSP_WHITELIST = SUPPORTED_HOSTS.map(h => h.domain).join(' ')
+/* global chrome, _, SUPPORTED_HOSTS */
+const CSP_WHITELIST = _(SUPPORTED_HOSTS).map(h => h.domain).uniq().join(' ')
 
 const onHeadersReceived = (details) => {
   details.responseHeaders.forEach(header => {
