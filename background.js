@@ -1,13 +1,10 @@
-/* global chrome */
-
-const HOST_WHITELIST = [
-  'https://i.imgur.com'
-].join(' ')
+/* global chrome, SUPPORTED_HOSTS */
+const CSP_WHITELIST = SUPPORTED_HOSTS.map(h => h.domain).join(' ')
 
 const onHeadersReceived = (details) => {
   details.responseHeaders.forEach(header => {
     if (header.name.match(/content-security-policy/i)) {
-      header.value = (header.value.replace(/media-src.*?;/, 'media-src ' + HOST_WHITELIST + ';'))
+      header.value = (header.value.replace(/media-src.*?;/, 'media-src ' + CSP_WHITELIST + ';'))
     }
   })
 

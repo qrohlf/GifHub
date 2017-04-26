@@ -21,14 +21,14 @@
   ],
 
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["supported_hosts.js", "background.js"],
     "persistent": true
   },
 
   "content_scripts": [
     {
       "matches": ["https://github.com/*"],
-      "js": ["vendor/lodash.js", "gifhub.js"]
+      "js": ["vendor/lodash.js", "supported_hosts.js", "gifhub.js"]
     }
   ]
 }

@@ -1,8 +1,4 @@
-/* global _,MutationObserver */
-
-const URL_WHITELIST = [
-  /^https?:\/\/i.imgur.com\/\w+\.gifv$/i
-]
+/* global _,MutationObserver,SUPPORTED_HOSTS */
 
 const createWithAttrs = (tag, attrs) => {
   const node = document.createElement(tag)
@@ -11,7 +7,10 @@ const createWithAttrs = (tag, attrs) => {
 }
 
 const getVideoNode = (href) => {
-  const src = href.replace('gifv', 'mp4') // TODO
+  const host = SUPPORTED_HOSTS.find(h => href.match(h.pattern))
+  if (!host) return null
+  const id = href.match(host.pattern)[1]
+  const src = host.template(id)
   const video = createWithAttrs('video', {
     autoplay: '',
     muted: '',
@@ -20,7 +19,7 @@ const getVideoNode = (href) => {
     'res-media-zoomable': '',
     style: 'display: block; max-width: 100%; max-height: 400px;'
   })
-  const source = createWithAttrs('source', {src, type: 'video/mp4'})
+  const source = createWithAttrs('source', {src, type: host.type})
   video.appendChild(source)
   return video
 }
@@ -29,7 +28,7 @@ const processPage = () => {
   // grab all valid links
   const commentLinks = Array.prototype.slice.call(document.querySelectorAll('.comment-body a'))
     .filter(a => !a.querySelector('video'))
-    .filter(a => a.href && a.href !== '' && URL_WHITELIST.some(pattern => a.href.match(pattern)))
+    .filter(a => a.href && a.href !== '' && SUPPORTED_HOSTS.some(host => a.href.match(host.pattern)))
 
   commentLinks.forEach(anchor => {
     const https = anchor.href.replace('http://', 'https://')
