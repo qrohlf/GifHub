@@ -3,7 +3,8 @@
   "version": "1.0.4",
   "description": "Adds support for gifv/webm/mp4 to discussions on github.com",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "git archive HEAD --format=zip > build.zip"
   },
   "author": "Quinn Rohlf <qr@qrohlf.com>",
   "license": "WTFPL",
