@@ -9,8 +9,8 @@ const createWithAttrs = (tag, attrs) => {
 const getVideoNode = (href) => {
   const host = SUPPORTED_HOSTS.find(h => href.match(h.pattern))
   if (!host) return null
-  const id = href.match(host.pattern)[1]
-  const src = host.template(id)
+  const matches = href.match(host.pattern)
+  const src = host.template(matches)
   const video = createWithAttrs('video', {
     autoplay: '',
     muted: '',
