@@ -8,6 +8,10 @@ WIP Chrome extension. Adds gifv/webm/mp4 support to GitHub discussions.
 
 You can install GifHub from the [chrome webstore](https://chrome.google.com/webstore/detail/fhkpolfjdpomehpncaggcdmolefgkfei/)
 
+## Usage
+
+Paste a link to a supported `.gifv` or `.webm` URL into a GitHub discussion. See [here](https://github.com/qrohlf/GifHub/issues/1) for some examples.
+
 ## Supported sites
 - imgur.com (link to the .gifv URL)
 - gfycat.com (link to the .webm URL)
