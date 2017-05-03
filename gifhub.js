@@ -11,6 +11,7 @@ const getVideoNode = (href) => {
   if (!host) return null
   const matches = href.match(host.pattern)
   const src = host.template(matches)
+  const type = host.type(matches)
   const video = createWithAttrs('video', {
     autoplay: '',
     muted: '',
@@ -19,7 +20,7 @@ const getVideoNode = (href) => {
     'res-media-zoomable': '',
     style: 'display: block; max-width: 100%; max-height: 400px;'
   })
-  const source = createWithAttrs('source', {src, type: host.type})
+  const source = createWithAttrs('source', {src, type})
   video.appendChild(source)
   return video
 }
