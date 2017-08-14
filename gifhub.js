@@ -18,7 +18,7 @@ const getVideoNode = (href) => {
     loop: '',
     poster: '',
     'res-media-zoomable': '',
-    style: 'display: block; max-width: 100%; max-height: 400px;'
+    style: 'display: block; max-width: 100%; max-height: 600px;'
   })
   const source = createWithAttrs('source', {src, type})
   video.appendChild(source)
