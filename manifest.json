@@ -3,7 +3,7 @@
   "name": "GifHub",
   "short_name": "GifHub",
   "description": "Adds support for gifv/webm/mp4 to discussions on github.com",
-  "version": "1.0.10",
+  "version": "1.0.11",
 
   "browser_action": {
     "default_title": "Adds support for gifv/webm/mp4 to discussions on github.com",
