@@ -10,5 +10,11 @@ window.SUPPORTED_HOSTS = [
     type: m => `video/${m[2]}`,
     domain: 'https://thumbs.gfycat.com https://zippy.gfycat.com https://fat.gfycat.com https://giant.gfycat.com',
     template: m => m[0]
+  },
+  {
+    pattern: /^https:\/\/instagram\..*.fbcdn.net\/.*\.mp4$/,
+    type: () => 'video/mp4',
+    domain: 'instagram.fsnc1-1.fna.fbcdn.net',
+    template: m => m[0]
   }
 ]
