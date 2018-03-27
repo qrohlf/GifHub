@@ -16,5 +16,11 @@ window.SUPPORTED_HOSTS = [
     type: () => 'video/mp4',
     domain: 'instagram.fsnc1-1.fna.fbcdn.net',
     template: m => m[0]
+  },
+  {
+    pattern: /^https:\/\/openpuppies.com\/mp4\/\w+\.mp4$/,
+    type: () => 'video/mp4',
+    domain: 'openpuppies.com',
+    template: m => m[0]
   }
 ]
