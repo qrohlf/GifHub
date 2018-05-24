@@ -76,10 +76,7 @@ const getPlayer = (videoNode) => {
 
   const showPlayOverlay = () => { playOverlay.style.opacity = 1 }
   const hidePlayOverlay = () => { playOverlay.style.opacity = 0 }
-  const updateUI = () => {
-    console.log('paused', videoNode.paused)
-    videoNode.paused ? showPlayOverlay() : hidePlayOverlay()
-  }
+  const updateUI = () => { videoNode.paused ? showPlayOverlay() : hidePlayOverlay() }
 
   playOverlay.appendChild(playButton)
   videoContainer.appendChild(videoNode)
