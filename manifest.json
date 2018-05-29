@@ -22,8 +22,7 @@
   ],
 
   "background": {
-    "scripts": ["vendor/lodash.js", "supported_hosts.js", "background.js"],
-    "persistent": true
+    "scripts": ["vendor/lodash.js", "supported_hosts.js", "background.js"]
   },
 
   "content_scripts": [
