@@ -22,5 +22,11 @@ window.SUPPORTED_HOSTS = [
     type: () => 'video/mp4',
     domain: 'openpuppies.com',
     template: m => m[0]
+  },
+  {
+    pattern: /^https:\/\/streamable.com\/mp4\/\w+\.mp4$/,
+    type: () => 'video/mp4',
+    domain: 'https://streamable.com',
+    template: m => m[0]
   }
 ]
