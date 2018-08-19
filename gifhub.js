@@ -8,8 +8,12 @@ const createWithAttrs = (tag, attrs = {}) => {
 
 const getVideoNode = (href) => {
   const host = SUPPORTED_HOSTS.find(h => href.match(h.pattern))
+  console.log({host})
   if (!host) return null
+  console.log({href, patter: host.pattern})
   const matches = href.match(host.pattern)
+
+  console.log({matches})
   const src = host.template(matches)
   const type = host.type(matches)
   const video = createWithAttrs('video', {
@@ -105,7 +109,10 @@ const processPage = () => {
   // grab all valid links that don't already have a video
   const commentLinks = Array.prototype.slice.call(document.querySelectorAll('.comment-body a'))
     .filter(a => !a.querySelector('video'))
-    .filter(a => a.href && a.href !== '' && SUPPORTED_HOSTS.some(host => a.href.match(host.pattern)))
+    .filter(a => {
+      console.log(SUPPORTED_HOSTS.some(host => a.href.match(host.pattern)))
+      return a.href && a.href !== '' && SUPPORTED_HOSTS.some(host => a.href.match(host.pattern))
+    })
 
   commentLinks.forEach(anchor => {
     const https = anchor.href.replace('http://', 'https://')
