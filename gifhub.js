@@ -6,7 +6,7 @@ const createWithAttrs = (tag, attrs = {}) => {
   return node
 }
 
-const getVideoNode = (href) => {
+const getVideoNode = href => {
   const host = SUPPORTED_HOSTS.find(h => href.match(h.pattern))
   if (!host) return null
   const matches = href.match(host.pattern)
@@ -25,7 +25,7 @@ const getVideoNode = (href) => {
   return video
 }
 
-const getPlayer = (videoNode) => {
+const getPlayer = videoNode => {
   const blockContainer = createWithAttrs('div')
 
   const videoContainer = createWithAttrs('div', {
@@ -74,9 +74,9 @@ const getPlayer = (videoNode) => {
     playButton.style.opacity = 0.6
   })
 
-  const showPlayOverlay = () => { playOverlay.style.opacity = 1 }
-  const hidePlayOverlay = () => { playOverlay.style.opacity = 0 }
-  const updateUI = () => { videoNode.paused ? showPlayOverlay() : hidePlayOverlay() }
+  const showPlayOverlay = () => (playOverlay.style.opacity = 1)
+  const hidePlayOverlay = () => (playOverlay.style.opacity = 0)
+  const updateUI = () => (videoNode.paused ? showPlayOverlay() : hidePlayOverlay())
 
   playOverlay.appendChild(playButton)
   videoContainer.appendChild(videoNode)
@@ -85,7 +85,8 @@ const getPlayer = (videoNode) => {
 
   playOverlay.addEventListener('click', () => {
     if (videoNode.paused) {
-      videoNode.play()
+      videoNode
+        .play()
         .then(updateUI)
         .catch(updateUI)
     } else {
@@ -94,7 +95,8 @@ const getPlayer = (videoNode) => {
     }
   })
 
-  videoNode.play()
+  videoNode
+    .play()
     .then(updateUI)
     .catch(updateUI)
 
@@ -103,7 +105,8 @@ const getPlayer = (videoNode) => {
 
 const processPage = () => {
   // grab all valid links that don't already have a video
-  const commentLinks = Array.prototype.slice.call(document.querySelectorAll('.comment-body a'))
+  const commentLinks = Array.prototype.slice
+    .call(document.querySelectorAll('.comment-body a'))
     .filter(a => !a.querySelector('video'))
     .filter(a => a.href && a.href !== '' && SUPPORTED_HOSTS.some(host => a.href.match(host.pattern)))
 

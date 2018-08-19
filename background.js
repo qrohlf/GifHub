@@ -1,10 +1,13 @@
 /* global chrome, _, SUPPORTED_HOSTS */
-const CSP_WHITELIST = _(SUPPORTED_HOSTS).map(h => h.domain).uniq().join(' ')
+const CSP_WHITELIST = _(SUPPORTED_HOSTS)
+  .map(h => h.domain)
+  .uniq()
+  .join(' ')
 
-const onHeadersReceived = (details) => {
+const onHeadersReceived = details => {
   details.responseHeaders.forEach(header => {
     if (header.name.match(/content-security-policy/i)) {
-      header.value = (header.value.replace(/media-src.*?;/, 'media-src ' + CSP_WHITELIST + ';'))
+      header.value = header.value.replace(/"media-src.*?;/, 'media-src ' + CSP_WHITELIST + ';')
     }
   })
 
