@@ -26,7 +26,7 @@ window.SUPPORTED_HOSTS = [
   {
     pattern: /^https:\/\/(.*)\.streamable\.com\/video\/mp4(.*)\/(\w+)\.mp4/,
     type: () => 'video/mp4',
-    domain: 'https://streamable.com',
-    template: m => m[0]
+    domain: 'https://cdn-b-east.streamable.com streamable.com',
+    template: ({input}) => input
   }
 ]
