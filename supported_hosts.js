@@ -24,6 +24,12 @@ window.SUPPORTED_HOSTS = [
     template: m => m[0]
   },
   {
+    pattern: /^https:\/\/(.*)\.streamable\.com\/video\/mp4(.*)\/(\w+)\.mp4/,
+    type: () => 'video/mp4',
+    domain: 'https://cdn-b-east.streamable.com streamable.com',
+    template: ({input}) => input
+  },
+  {
     pattern: /^https:\/\/v\.redd\.it\/\w+\/DASH.*/,
     type: m => `video/mp4`,
     domain: 'v.redd.it',
